@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 This module defines a Server class that paginates a database of popular baby names.
 """

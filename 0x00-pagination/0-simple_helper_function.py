@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 This module contains a simple helper function for pagination.
 """

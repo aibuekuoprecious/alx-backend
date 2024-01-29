@@ -43,7 +43,7 @@ class Server:
         Args:
             value (int): The value to be asserted.
         """
-        assert type(value) is int and value > 0
+        assert isinstance(value, int) and value > 0
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
