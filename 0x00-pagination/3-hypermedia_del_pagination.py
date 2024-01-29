@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """
 Deletion-resilient hypermedia pagination
 """
@@ -47,23 +48,27 @@ class Server:
             next_index: index of the first item in the next page
             page_size: the current page size
             data: actual page of the dataset
+
         Args:
-            index(int): first required index
-            page_size(int): required number of records per page
+            index (int): index of the first item in the current page (default: None)
+            page_size (int): number of records per page (default: 10)
+
+        Returns:
+            dict: A dictionary containing the pagination information and the data page.
         """
         dataset = self.indexed_dataset()
         data_length = len(dataset)
         assert 0 <= index < data_length
-        response = {}
-        data = []
+        response: Dict = {}
+        data: List = []
         response['index'] = index
         for i in range(page_size):
             while True:
-                curr = dataset.get(index)
+                current_item = dataset.get(index)
                 index += 1
-                if curr is not None:
+                if current_item is not None:
                     break
-            data.append(curr)
+            data.append(current_item)
 
         response['data'] = data
         response['page_size'] = len(data)
