@@ -47,8 +47,8 @@ class Server:
         """
         Returns the requested page from the dataset
         Args:
-            page (int): required page number. must be a positive integer
-            page_size (int): number of records per page. must be a positive integer
+            page (int): required page number
+            page_size (int): number of records per page
         Return:
             list of lists containing required data from the dataset
         """
