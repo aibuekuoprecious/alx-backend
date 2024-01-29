@@ -23,7 +23,6 @@ class Server:
     def dataset(self) -> List[List]:
         """
         Reads from csv file and returns the dataset.
-
         Returns:
             List[List]: The dataset.
         """
@@ -39,7 +38,6 @@ class Server:
     def assert_positive_integer_type(value: int) -> None:
         """
         Asserts that the value is a positive integer.
-
         Args:
             value (int): The value to be asserted.
         """
@@ -48,11 +46,9 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
         Returns a page of the dataset.
-
         Args:
             page (int): The page number.
             page_size (int): The page size.
-
         Returns:
             List[List]: The page of the dataset.
         """
@@ -69,11 +65,9 @@ class Server:
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
         """
         Returns a page of the dataset.
-
         Args:
             page (int): The page number.
             page_size (int): The page size.
-
         Returns:
             List[List]: The page of the dataset.
         """
