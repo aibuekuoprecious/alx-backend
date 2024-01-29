@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-This module contains a class with methods to create simple pagination from csv data.
+Class with methods to create simple pagination from csv data.
 """
 
 import csv
