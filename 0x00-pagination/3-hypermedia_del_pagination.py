@@ -48,8 +48,8 @@ class Server:
             page_size: the current page size
             data: actual page of the dataset
         Args:
-            index (int): index of the first item in the current page (default: None)
-            page_size (int): number of records per page (default: 10)
+            index (int): index of the first item in the current page
+            page_size (int): number of records per page
         """
         dataset = self.indexed_dataset()
         data_length = len(dataset)
