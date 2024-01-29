@@ -62,7 +62,7 @@ class Server:
         response: Dict = {}
         data: List = []
         response['index'] = index
-        for i in range(page_size):
+        for _ in range(page_size):
             while True:
                 current_item = dataset.get(index)
                 index += 1
@@ -76,4 +76,8 @@ class Server:
             response['next_index'] = index
         else:
             response['next_index'] = None
+
+        total_pages = math.ceil(data_length / page_size)
+        response['total_pages'] = total_pages
+
         return response
