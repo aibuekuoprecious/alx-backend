@@ -50,8 +50,6 @@ class Server:
         Args:
             index (int): index of the first item in the current page (default: None)
             page_size (int): number of records per page (default: 10)
-        Returns:
-            dict: A dictionary containing the pagination information and the data page.
         """
         dataset = self.indexed_dataset()
         data_length = len(dataset)
