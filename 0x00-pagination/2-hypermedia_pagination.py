@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
+
 """
-Contains class with methods to create simple pagination from csv data
+This module contains a class with methods to create simple pagination from csv data.
 """
+
 import csv
 from typing import List
+import math
 index_range = __import__('0-simple_helper_function').index_range
 
 
 class Server:
-    """Server class to paginate a database of popular baby names.
     """
+    Server class to paginate a database of popular baby names.
+    """
+
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
@@ -18,6 +23,7 @@ class Server:
     def dataset(self) -> List[List]:
         """
         Reads from csv file and returns the dataset.
+
         Returns:
             List[List]: The dataset.
         """
@@ -33,6 +39,7 @@ class Server:
     def assert_positive_integer_type(value: int) -> None:
         """
         Asserts that the value is a positive integer.
+
         Args:
             value (int): The value to be asserted.
         """
@@ -41,9 +48,11 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
         Returns a page of the dataset.
+
         Args:
             page (int): The page number.
             page_size (int): The page size.
+
         Returns:
             List[List]: The page of the dataset.
         """
@@ -60,17 +69,19 @@ class Server:
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
         """
         Returns a page of the dataset.
+
         Args:
             page (int): The page number.
             page_size (int): The page size.
+
         Returns:
             List[List]: The page of the dataset.
         """
-        total_pages = len(self.dataset()) // page_size + 1
+        total_pages = math.ceil(len(self.dataset()) / page_size)
         data = self.get_page(page, page_size)
         info = {
             "page": page,
-            "page_size": page_size if page_size <= len(data) else len(data),
+            "page_size": len(data),
             "total_pages": total_pages,
             "data": data,
             "prev_page": page - 1 if page > 1 else None,
