@@ -71,8 +71,4 @@ class Server:
             response['next_index'] = index
         else:
             response['next_index'] = None
-
-        total_pages = math.ceil(data_length / page_size)
-        response['total_pages'] = total_pages
-
         return response
