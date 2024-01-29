@@ -47,11 +47,9 @@ class Server:
             next_index: index of the first item in the next page
             page_size: the current page size
             data: actual page of the dataset
-
         Args:
             index (int): index of the first item in the current page (default: None)
             page_size (int): number of records per page (default: 10)
-
         Returns:
             dict: A dictionary containing the pagination information and the data page.
         """
