@@ -7,6 +7,14 @@ from base_caching import BaseCaching
 class LIFOCache(BaseCaching):
     """
     LIFOCache defines a LIFO caching system
+
+    Attributes:
+        order (list): A list to keep track of the order of keys in the cache
+
+    Methods:
+        __init__(): Initializes the LIFOCache class
+        put(key, item): Caches a key-value pair
+        get(key): Returns the value linked to a given key, or None
     """
 
     def __init__(self):
@@ -19,6 +27,10 @@ class LIFOCache(BaseCaching):
     def put(self, key, item):
         """
         Cache a key-value pair
+
+        Args:
+            key: The key to be cached
+            item: The value to be cached
         """
         if key is None or item is None:
             return
@@ -35,5 +47,12 @@ class LIFOCache(BaseCaching):
     def get(self, key):
         """
         Return the value linked to a given key, or None
+
+        Args:
+            key: The key to retrieve the value for
+
+        Returns:
+            The value linked to the given key, or 
+            None if the key is not found in the cache
         """
         return self.cache_data.get(key)
