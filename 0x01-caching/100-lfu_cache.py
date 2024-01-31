@@ -26,7 +26,11 @@ class LFUCache(BaseCaching):
         else:
             length = len(self.cache_data)
             if length >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
-                lfu_keys = [k for k, v in self.frequency.items() if v == min(self.frequency.values())]
+                lfu_keys = [
+                    k
+                    for k, v in self.frequency.items()
+                    if v == min(self.frequency.values())
+                ]
                 if len(lfu_keys) > 1:
                     lru_lfu = {k: self.usage.index(k) for k in lfu_keys}
                     discard = self.usage[min(lru_lfu.values())]

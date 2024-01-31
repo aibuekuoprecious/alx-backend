@@ -8,6 +8,7 @@ class LRUCache(BaseCaching):
     """
     LRUCache defines a Least Recently Used (LRU) caching system
     """
+
     def __init__(self):
         """
         Initialize the class with the parent's init method
