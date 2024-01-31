@@ -22,7 +22,8 @@ class MRUCache(BaseCaching):
         """
         if key is None or item is None:
             return
-        if len(self.cache_data) >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
+        cache_size = len(self.cache_data)
+        if cache_size >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
             discarded_key = self.usage[-1]
             print("DISCARD: {}".format(discarded_key))
             del self.cache_data[discarded_key]
