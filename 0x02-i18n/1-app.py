@@ -10,9 +10,10 @@ class Config(object):
     """
     Application configuration class
     """
-    LANGUAGES = ['en', 'fr']
-    BABEL_DEFAULT_LOCALE = 'en'
-    BABEL_DEFAULT_TIMEZONE = 'UTC'
+
+    LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
 def create_app() -> Flask:
@@ -27,7 +28,7 @@ def create_app() -> Flask:
 
     Babel(app)
 
-    @app.route('/', strict_slashes=False)
+    @app.route("/", strict_slashes=False)
     def index() -> str:
         """
         Renders a basic html template
@@ -35,11 +36,11 @@ def create_app() -> Flask:
         Returns:
             str: The rendered HTML template
         """
-        return render_template('1-index.html')
+        return render_template("1-index.html")
 
     return app
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = create_app()
     app.run()

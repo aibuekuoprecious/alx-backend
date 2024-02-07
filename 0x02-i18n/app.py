@@ -13,9 +13,10 @@ class Config(object):
     """
     Application configuration class
     """
-    LANGUAGES = ['en', 'fr']
-    BABEL_DEFAULT_LOCALE = 'en'
-    BABEL_DEFAULT_TIMEZONE = 'UTC'
+
+    LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
 # Instantiate the application object
@@ -51,10 +52,10 @@ def get_locale() -> str:
     Gets locale from request object
     """
     options = [
-        request.args.get('locale', '').strip(),
-        g.user.get('locale', None) if g.user else None,
-        request.accept_languages.best_match(app.config['LANGUAGES']),
-        Config.BABEL_DEFAULT_LOCALE
+        request.args.get("locale", "").strip(),
+        g.user.get("locale", None) if g.user else None,
+        request.accept_languages.best_match(app.config["LANGUAGES"]),
+        Config.BABEL_DEFAULT_LOCALE,
     ]
     for locale in options:
         if locale and locale in Config.LANGUAGES:
@@ -66,13 +67,13 @@ def get_timezone() -> str:
     """
     Gets timezone from request object
     """
-    tz = request.args.get('timezone', '').strip()
+    tz = request.args.get("timezone", "").strip()
     if not tz and g.user:
-        tz = g.user['timezone']
+        tz = g.user["timezone"]
     try:
         tz = pytz.timezone(tz).zone
     except pytz.exceptions.UnknownTimeZoneError:
-        tz = app.config['BABEL_DEFAULT_TIMEZONE']
+        tz = app.config["BABEL_DEFAULT_TIMEZONE"]
     return tz
 
 
@@ -81,17 +82,17 @@ def before_request() -> None:
     """
     Adds valid user to the global session object `g`
     """
-    setattr(g, 'user', get_user(request.args.get('login_as', 0)))
-    setattr(g, 'time', format_datetime(datetime.datetime.now()))
+    setattr(g, "user", get_user(request.args.get("login_as", 0)))
+    setattr(g, "time", format_datetime(datetime.datetime.now()))
 
 
-@app.route('/', strict_slashes=False)
+@app.route("/", strict_slashes=False)
 def index() -> str:
     """
     Renders a basic html template
     """
-    return render_template('index.html')
+    return render_template("index.html")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run()
